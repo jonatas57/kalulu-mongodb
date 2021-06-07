@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }))
 app.post('/log', async (req, res) => {
     fs.writeFile(getFilename(), JSON.stringify(req.body), (err) => {
         if (err) {
-            res.status('500').send({error: e});
+            res.status('500').send({error: err});
         } else {
             res.status(200).send()
         }
