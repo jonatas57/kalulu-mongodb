@@ -10,21 +10,22 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 app.post('/log', async (req, res) => {
-    try {
-        await client.connect();
-        const db = client.db("kaluluDB");
-
-        const col = db.collection("datafiles");
-
-        let file = req.body;
-        const p = await col.insertOne(file);
-    } 
-    catch (err) {
-        console.log(err.stack);
-    }
-    finally {
-        await client.close();
-    }
+  console.log("Post OK");
+//    try {
+//        await client.connect();
+//        const db = client.db("kaluluDB");
+//
+//        const col = db.collection("datafiles");
+//
+//        let file = req.body;
+//        const p = await col.insertOne(file);
+//    } 
+//    catch (err) {
+//        console.log(err.stack);
+//    }
+//    finally {
+//        await client.close();
+//    }
 })
 
 app.get('/', (req, res) => res.send("<html>\n<body>\nTeste\n</body>\n</html>"))
