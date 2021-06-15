@@ -30,6 +30,6 @@ app.post('/log', async (req, res) => {
 
 app.get('/', (req, res) => res.send("<html>\n<body>\nTeste\n</body>\n</html>"))
 
-app.listen(process.env.PORT, () => {
-    console.log('Server is up on port ' + process.env.PORT + '...')
+app.listen(3000, () => {
+    console.log('Server is up on port 3000...')
 })
