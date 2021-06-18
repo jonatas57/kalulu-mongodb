@@ -7,8 +7,8 @@ const uri = process.env.MONGODB_URI
 const client = new MongoClient(uri);
 
 const app = express()
-app.use(express.urlencoded({ limit: 102400, extended: true }))
-app.use(express.json({ limit: 102400, extended: true }))
+app.use(express.urlencoded({ limit: 102400, extended: true, parameterLimit: 100000 }))
+app.use(express.json({ limit: 102400, extended: true, parameterLimit: 100000 }))
 
 app.post('/log', async (req, res) => {
   console.log("Post OK");
