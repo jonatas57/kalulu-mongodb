@@ -2,13 +2,14 @@ const fs = require('fs')
 const express = require('express')
 const { getFilename } = require('./util')
 const { MongoClient } = require("mongodb")
+const bodyParser = require('body-parser')
 const uri = process.env.MONGODB_URI
 
 const client = new MongoClient(uri);
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))
-app.use(express.bodyParser({limit: '50mb'}))
+app.use(bodyParser.raw({limit: '50mb'}))
 
 app.post('/log', async (req, res) => {
   console.log("Post OK");
