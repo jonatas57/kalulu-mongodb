@@ -5,7 +5,7 @@ const { MongoClient } = require("mongodb")
 const bodyParser = require('body-parser')
 const uri = process.env.MONGODB_URI
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, { useUnifiedTopology: true });
 
 const app = express()
 app.use(express.urlencoded({limit: '50mb', extended: false, parameterLimit: 100000}))
