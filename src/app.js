@@ -8,6 +8,7 @@ const client = new MongoClient(uri);
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))
+app.use(express.bodyParser({limit: '50mb'}))
 
 app.post('/log', async (req, res) => {
   console.log("Post OK");
