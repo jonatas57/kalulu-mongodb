@@ -9,7 +9,7 @@ const client = new MongoClient(uri);
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))
-app.use(bodyParser.raw({limit: 1024}))
+app.use(bodyParser.raw({limit: 102400}))
 
 app.post('/log', async (req, res) => {
   console.log("Post OK");
