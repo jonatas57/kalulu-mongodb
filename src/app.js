@@ -8,10 +8,7 @@ const uri = process.env.MONGODB_URI
 const client = new MongoClient(uri);
 
 const app = express()
-app.use(express.urlencoded({limit: 102400, extended: false, parameterLimit: 100000}))
-app.use(express.json({limit: 102400, extended: false, parameterLimit: 100000}))
-app.use(bodyParser.urlencoded({limit: 102400, extended: false, parameterLimit: 100000}))
-app.use(bodyParser.json({limit: 102400, extended: false, parameterLimit: 100000}))
+app.use(express.urlencoded({limit: '50mb', extended: false, parameterLimit: 100000}))
 
 app.post('/log', async (req, res) => {
   console.log("Post OK");
@@ -36,5 +33,5 @@ app.post('/log', async (req, res) => {
 app.get('/', (req, res) => res.send("<html>\n<body>\nTeste\n</body>\n</html>"))
 
 app.listen(process.env.PORT || 3000, () => {
-    console.log('Server is up on port 3000...')
+    console.log('Server is up on port ' + (process.env.PORT || 3000) + '...')
 })
