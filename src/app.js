@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.post('/log', async (req, res) => {
   console.log("Post OK");
+  res.status(200).send();
 //    try {
 //        await client.connect();
 //        const db = client.db("kaluluDB");
