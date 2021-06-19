@@ -5,14 +5,14 @@ const { MongoClient } = require("mongodb")
 const bodyParser = require('body-parser')
 const uri = process.env.MONGODB_URI
 
-const client = new MongoClient(uri, { useUnifiedTopology: true });
+const client = new MongoClient();
 
 const app = express()
 app.use(express.urlencoded({limit: '50mb', extended: false, parameterLimit: 100000}))
 
 app.post('/log', async (req, res) => {
     try {
-        await client.connect();
+        await client.connect(uri, { useUnifiedTopology: true });
         const db = client.db("kaluluDB");
 
         const col = db.collection("datafiles");
